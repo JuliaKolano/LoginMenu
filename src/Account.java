@@ -29,8 +29,17 @@ public class Account {
         do {
 
             try{
-                System.out.print("Please input your username: ");
-                username = scanner.nextLine();
+
+                do {
+                    // Keep asking for the username if nothing is inputted before asking for password
+                    System.out.print("Please input your username: ");
+                    username = scanner.nextLine();
+
+                    if (username.isEmpty()) {
+                        System.out.println("\nYou provided no input.");
+                    }
+                } while (username.isEmpty());
+
             } catch (Exception e){
                 System.out.println("There was an error with your username.");
             }
@@ -55,7 +64,7 @@ public class Account {
             }
 
             if (!authenticated) {
-                System.out.println("Invalid username or password. Try again.\n");
+                System.out.println("\nInvalid username or password. Try again.\n");
             }
 
         } while (!authenticated);
